@@ -2,6 +2,7 @@ use std::collections::HashMap;
 use text_io::read;
 
 pub fn find_most_frequent_letter() {
+    print!("\nEnter string: ");
     let input: String = read!();
 
     let mut freq: HashMap<char, usize> = HashMap::new();

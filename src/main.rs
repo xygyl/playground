@@ -1,6 +1,7 @@
 use text_io::read;
 
 mod code;
+
 fn main() {
     loop {
         println!("\n0 -> exit");
@@ -16,7 +17,9 @@ fn main() {
         println!("10 -> most_frequent_letter");
         println!("11 -> array_transpose");
         print!("Function selection: ");
+
         let c: u8 = read!();
+
         match c {
             0 => break,
             1 => code::guessing_game::func_guessing_game(),
@@ -30,7 +33,7 @@ fn main() {
             9 => code::write_n_0s_to_file::func_write_n_0s_to_file(),
             10 => code::most_frequent_letter::find_most_frequent_letter(),
             11 => code::array_transpose::make_array_transpose(),
-            _ => println!("\nPLEASE ENTER 1-8"),
+            _ => println!("\nPLEASE ENTER 1-11"),
         }
     }
 }
