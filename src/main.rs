@@ -16,6 +16,7 @@ fn main() {
         println!("9 -> Write n zeroes to file");
         println!("10 -> most_frequent_letter");
         println!("11 -> array_transpose");
+        println!("12 -> n_fib");
         print!("Function selection: ");
 
         let c: u8 = read!();
@@ -33,7 +34,8 @@ fn main() {
             9 => code::write_n_0s_to_file::func_write_n_0s_to_file(),
             10 => code::most_frequent_letter::find_most_frequent_letter(),
             11 => code::array_transpose::make_array_transpose(),
-            _ => println!("\nPLEASE ENTER 1-11"),
+            12 => code::n_fib::main(),
+            _ => println!("\nPLEASE ENTER 1-12"),
         }
     }
 }

@@ -1,11 +1,12 @@
+pub mod array_transpose;
 pub mod collatz;
 pub mod draw_rect;
 pub mod draw_rect_rand;
 pub mod guessing_game;
 pub mod is_even_odd;
+pub mod most_frequent_letter;
 pub mod n_dice_roll;
+pub mod n_fib;
 pub mod squared_array;
 pub mod three_dice_roll;
 pub mod write_n_0s_to_file;
-pub mod most_frequent_letter;
-pub mod array_transpose;
