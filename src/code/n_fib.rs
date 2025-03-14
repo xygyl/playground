@@ -25,5 +25,6 @@ pub fn get_nth_fib_num(n: u128) -> BigUint {
 pub fn main() {
     print!("Enter n: ");
     let n: u128 = read!();
-    println!("The {}th Fibonacci number is: {}", n, get_nth_fib_num(n));
+    let nf = get_nth_fib_num(n);
+    println!("The {}th Fibonacci number is: {}", n, nf);
 }
