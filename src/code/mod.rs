@@ -1,5 +1,6 @@
 pub mod array_transpose;
 pub mod collatz;
+pub mod collatz_max_iter;
 pub mod draw_rect;
 pub mod draw_rect_rand;
 pub mod guessing_game;
