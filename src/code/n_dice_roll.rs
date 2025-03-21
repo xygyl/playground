@@ -12,6 +12,5 @@ pub fn func_n_dice_roll() {
         if i > 20 {
             break;
         }
-        // test
     }
 }
