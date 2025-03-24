@@ -37,7 +37,7 @@ fn main() {
             11 => code::most_frequent_letter::find_most_frequent_letter(),
             12 => code::array_transpose::make_array_transpose(),
             13 => code::n_fib::main(),
-            _ => println!("\nPLEASE ENTER 1-12"),
+            _ => println!("\nPLEASE ENTER 0-13"),
         }
     }
 }
