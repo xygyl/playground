@@ -30,10 +30,9 @@ pub fn collatz_max_iter() {
                 temp_seq.push(n);
 
                 // Apply the Collatz formula.
-                if n % 2 == 0 {
-                    n /= 2;
-                } else {
-                    n = (3 * n) + 1;
+                match n % 2 == 0 {
+                    true => n /= 2,
+                    false => n = (3 * n) + 1,
                 }
                 iter += 1;
             }

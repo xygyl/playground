@@ -1,7 +1,7 @@
 use rand::Rng;
 use text_io::read;
 
-pub fn func_three_dice_roll() {
+pub fn three_dice_roll() {
     print!("\nPlease input max range: ");
 
     let i: u8 = read!();

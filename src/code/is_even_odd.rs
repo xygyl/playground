@@ -1,6 +1,6 @@
 use text_io::read;
 
-pub fn func_is_even_odd() {
+pub fn is_even_odd() {
     loop {
         print!("\nPlease input number: ");
         let i: i128 = read!();

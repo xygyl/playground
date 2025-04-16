@@ -1,7 +1,7 @@
 use rand::Rng;
 use text_io::read;
 
-pub fn func_draw_rect_rand() {
+pub fn draw_rect_rand() {
     print!("\nEnter min value: ");
     let min: u8 = read!();
 

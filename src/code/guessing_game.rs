@@ -2,7 +2,7 @@ use rand::Rng;
 use std::cmp::Ordering;
 use text_io::read;
 
-pub fn func_guessing_game() {
+pub fn guessing_game() {
     println!("\nGuess the number between 1 and 200!");
 
     let s_num = rand::rng().random_range(1..=200);

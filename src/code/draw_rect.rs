@@ -1,6 +1,6 @@
 use text_io::read;
 
-pub fn func_draw_rect() {
+pub fn draw_rect() {
     print!("\nEnter rectangle width: ");
     let width: u8 = read!();
 

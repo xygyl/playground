@@ -1,17 +1,16 @@
 use num_format::{Locale, ToFormattedString};
 use text_io::read;
 
-pub fn func_collatz() {
+pub fn collatz() {
     print!("\nPlease enter number to calculate: ");
     let mut n: u128 = read!();
     let mut sequence = vec![n];
     let mut iter = 0;
 
     while n != 1 {
-        if n % 2 == 0 {
-            n /= 2;
-        } else {
-            n = (3 * n) + 1;
+        match n % 2 == 0 {
+            true => n /= 2,
+            false => n = (3 * n) + 1,
         }
         sequence.push(n);
         iter += 1;

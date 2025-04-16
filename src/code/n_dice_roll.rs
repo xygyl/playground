@@ -1,7 +1,7 @@
 use rand::Rng;
 use text_io::read;
 
-pub fn func_n_dice_roll() {
+pub fn n_dice_roll() {
     loop {
         print!("\nEnter number of die sides: ");
         let i: u8 = read!();

@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use text_io::read;
 
-pub fn find_most_frequent_letter() {
+pub fn most_frequent_letter() {
     print!("\nEnter string: ");
     let input: String = read!();
 

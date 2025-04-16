@@ -1,7 +1,7 @@
 use rand::Rng;
 use text_io::read;
 
-pub fn make_array_transpose() {
+pub fn array_transpose() {
     // Get rows from user
     print!("\nEnter number of rows: ");
     let rows: usize = read!();
