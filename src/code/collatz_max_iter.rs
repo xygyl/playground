@@ -13,7 +13,6 @@ pub fn collatz_max_iter() {
     // Use an Arc-wrapped DashMap for concurrent caching.
     let collatz_map = Arc::new(DashMap::new());
 
-    // Process each number in parallel.
     let results: Vec<(u64, u64)> = numbers
         .par_iter()
         .map(|&num| {
@@ -51,15 +50,14 @@ pub fn collatz_max_iter() {
         .collect();
 
     // Find the number with the maximum iterations.
-    if let Some(&(number_with_max_iter, max_iter)) =
-        results.iter().max_by_key(|&&(_num, iterations)| iterations)
-    {
-        println!(
-            "\nNumber {} took the most iterations: {}",
-            number_with_max_iter.to_formatted_string(&Locale::en),
-            max_iter.to_formatted_string(&Locale::en)
-        );
-    } else {
-        println!("\nNo numbers processed.");
+    match results.iter().max_by_key(|&&(_num, iterations)| iterations) {
+        Some(&(number_with_max_iter, max_iter)) => {
+            println!(
+                "\nNumber {} took the most iterations: {}",
+                number_with_max_iter.to_formatted_string(&Locale::en),
+                max_iter.to_formatted_string(&Locale::en)
+            );
+        }
+        None => println!("\nNo numbers processed."),
     }
 }
