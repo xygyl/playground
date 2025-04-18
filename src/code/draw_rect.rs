@@ -1,5 +1,6 @@
 use text_io::read;
 
+/// Prints a rectangle given a width, height, and a character.
 pub fn draw_rect() {
     print!("\nEnter rectangle width: ");
     let width: u8 = read!();

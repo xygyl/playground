@@ -4,6 +4,7 @@ use rayon::prelude::*;
 use std::sync::Arc;
 use text_io::read;
 
+/// Gives the number with the most collatz iterations from a given range.
 pub fn collatz_max_iter() {
     print!("\nPlease enter range of numbers to calculate: ");
     let s: u64 = read!();

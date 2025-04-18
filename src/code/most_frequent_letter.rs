@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 use text_io::read;
 
+/// Returns the most frequent letter from a given string. Uppercase and lowercase numbers are treated as different.
 pub fn most_frequent_letter() {
     print!("\nEnter string: ");
     let input: String = read!();

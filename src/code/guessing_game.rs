@@ -2,6 +2,7 @@ use rand::Rng;
 use std::cmp::Ordering;
 use text_io::read;
 
+/// Number guessing game with a range from 1-200.
 pub fn guessing_game() {
     println!("\nGuess the number between 1 and 200!");
 

@@ -1,6 +1,7 @@
 use rand::Rng;
 use text_io::read;
 
+/// Prints a rectangle with a random width and height from a specified range for each parameter and a character.
 pub fn draw_rect_rand() {
     print!("\nEnter min value: ");
     let min: u8 = read!();

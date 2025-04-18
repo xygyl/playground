@@ -1,6 +1,7 @@
 use num_format::{Locale, ToFormattedString};
 use text_io::read;
 
+/// Prints the collatz sequence for a given number.
 pub fn collatz() {
     print!("\nPlease enter number to calculate: ");
     let mut n: u128 = read!();

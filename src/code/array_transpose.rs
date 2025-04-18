@@ -1,6 +1,7 @@
 use rand::Rng;
 use text_io::read;
 
+/// Prints an array of specified width and height with random integers, then prints its transposition.
 pub fn array_transpose() {
     // Get rows from user
     print!("\nEnter number of rows: ");

@@ -3,6 +3,7 @@ use std::io::Write;
 use std::process::exit;
 use text_io::read;
 
+/// Generates a file with n 0s.
 pub fn write_n_0s_to_file() {
     print!("Number of 0s: ");
     let size: usize = read!();

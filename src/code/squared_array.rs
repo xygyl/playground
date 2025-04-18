@@ -1,6 +1,7 @@
 use num_format::{Locale, ToFormattedString};
 use text_io::read;
 
+/// Raises an array of [1..=10] to power of the given number.
 pub fn squared_array() {
     let bases: [u32; 10] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 

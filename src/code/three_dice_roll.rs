@@ -1,6 +1,7 @@
 use rand::Rng;
 use text_io::read;
 
+/// Generates three random numbers between [0..=n] and ends when they're all the same.
 pub fn three_dice_roll() {
     print!("\nPlease input max range: ");
 

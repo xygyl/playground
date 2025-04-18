@@ -1,5 +1,6 @@
 use text_io::read;
 
+/// Returns whether a number is even or odd.
 pub fn is_even_odd() {
     loop {
         print!("\nPlease input number: ");

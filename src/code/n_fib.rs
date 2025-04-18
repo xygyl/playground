@@ -2,6 +2,7 @@ use num_bigint::BigUint;
 use num_traits::{One, Zero};
 use text_io::read;
 
+/// Returns the nth fibonacci number.
 pub fn n_fib(n: u128) -> BigUint {
     match n {
         0 => return BigUint::zero(),
@@ -22,6 +23,7 @@ pub fn n_fib(n: u128) -> BigUint {
     }
 }
 
+/// Runs the fibonacci function.
 pub fn calc_fib() {
     print!("Enter n: ");
     let n: u128 = read!();

@@ -1,6 +1,7 @@
 use rand::Rng;
 use text_io::read;
 
+/// Rolls a dice with between 1-20 sides.
 pub fn n_dice_roll() {
     loop {
         print!("\nEnter number of die sides: ");
