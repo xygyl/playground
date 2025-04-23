@@ -1,6 +1,4 @@
-use std::fs::File;
-use std::io::Write;
-use std::process::exit;
+use std::{fs::File, io::Write, process::exit};
 use text_io::read;
 
 /// Generates a file with n 0s.
