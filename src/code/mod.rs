@@ -9,5 +9,6 @@ pub mod most_frequent_letter;
 pub mod n_dice_roll;
 pub mod n_fib;
 pub mod squared_array;
+pub mod stupid_even_odd;
 pub mod three_dice_roll;
 pub mod write_n_0s_to_file;

@@ -6,7 +6,10 @@ pub fn is_even_odd() {
         print!("\nPlease input number: ");
         let i: i128 = read!();
         match i % 2 {
-            0 => println!("{} is even.", i),
+            0 => {
+                println!("nuh uh");
+                break;
+            }
             -1 | 1 => println!("{} is odd.", i),
             _ => println!("{} is not an integer.", i),
         }
