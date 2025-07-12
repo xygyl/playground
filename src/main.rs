@@ -1,5 +1,4 @@
 use text_io::read;
-
 mod code;
 use crate::code::{
     array_transpose::array_transpose, collatz::collatz, collatz_max_iter::collatz_max_iter,
