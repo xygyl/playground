@@ -49,7 +49,7 @@ fn main() {
             13 => calc_fib(),
             14 => stupid_even_odd(),
             15 => percent_off(),
-            _ => println!("\nPLEASE ENTER 0-13"),
+            _ => println!("\nPLEASE ENTER 0-15"),
         }
     }
 }
