@@ -5,8 +5,9 @@ use crate::code::{
     array_transpose::array_transpose, collatz::collatz, collatz_max_iter::collatz_max_iter,
     draw_rect::draw_rect, draw_rect_rand::draw_rect_rand, guessing_game::guessing_game,
     is_even_odd::is_even_odd, most_frequent_letter::most_frequent_letter, n_dice_roll::n_dice_roll,
-    n_fib::calc_fib, squared_array::squared_array, stupid_even_odd::stupid_even_odd,
-    three_dice_roll::three_dice_roll, write_n_0s_to_file::write_n_0s_to_file,
+    n_fib::calc_fib, percent_off::percent_off, squared_array::squared_array,
+    stupid_even_odd::stupid_even_odd, three_dice_roll::three_dice_roll,
+    write_n_0s_to_file::write_n_0s_to_file,
 };
 
 fn main() {
@@ -26,6 +27,7 @@ fn main() {
         println!("12 -> array_transpose");
         println!("13 -> n_fib");
         println!("14 -> stupid_even_odd");
+        println!("15 -> percent_off");
         print!("Function selection: ");
 
         let c: u8 = read!();
@@ -46,6 +48,7 @@ fn main() {
             12 => array_transpose(),
             13 => calc_fib(),
             14 => stupid_even_odd(),
+            15 => percent_off(),
             _ => println!("\nPLEASE ENTER 0-13"),
         }
     }
