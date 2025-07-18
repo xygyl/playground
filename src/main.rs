@@ -30,6 +30,7 @@ fn main() {
         print!("Function selection: ");
 
         let c: u8 = read!();
+        println!();
 
         match c {
             0 => break,
@@ -48,7 +49,7 @@ fn main() {
             13 => calc_fib(),
             14 => stupid_even_odd(),
             15 => percent_off(),
-            _ => println!("\nPLEASE ENTER 0-15"),
+            _ => println!("\nPLEASE ENTER A NUMBER BETWEEN 0 AND 15 INCLUSIVE"),
         }
     }
 }
