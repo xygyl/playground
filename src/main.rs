@@ -47,7 +47,7 @@ fn main() {
             11 => most_frequent_letter(),
             12 => array_transpose(),
             13 => calc_fib(),
-            14 => stupid_even_odd(),
+            14 => stupid_even_odd().expect("bruh"),
             15 => percent_off(),
             _ => println!("\nPLEASE ENTER A NUMBER BETWEEN 0 AND 15 INCLUSIVE"),
         }
