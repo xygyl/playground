@@ -3,6 +3,7 @@ pub mod collatz;
 pub mod collatz_max_iter;
 pub mod draw_rect;
 pub mod draw_rect_rand;
+pub mod factorial;
 pub mod guessing_game;
 pub mod is_even_odd;
 pub mod most_frequent_letter;
