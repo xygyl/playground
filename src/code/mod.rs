@@ -14,3 +14,4 @@ pub mod squared_array;
 pub mod stupid_even_odd;
 pub mod three_dice_roll;
 pub mod write_n_0s_to_file;
+pub mod death_clock;

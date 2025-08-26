@@ -6,7 +6,7 @@ use crate::code::{
     is_even_odd::is_even_odd, most_frequent_letter::most_frequent_letter, n_dice_roll::n_dice_roll,
     n_fib::calc_fib, percent_off::percent_off, squared_array::squared_array,
     stupid_even_odd::stupid_even_odd, three_dice_roll::three_dice_roll,
-    write_n_0s_to_file::write_n_0s_to_file, factorial::factorial,
+    write_n_0s_to_file::write_n_0s_to_file, factorial::factorial, death_clock::death_clock
 };
 
 fn main() {
@@ -28,6 +28,7 @@ fn main() {
         println!("14 -> stupid_even_odd");
         println!("15 -> percent_off");
         println!("16 -> factorial");
+        println!("17 -> death_clock");
         print!("Function selection: ");
 
         let c: u8 = read!();
@@ -51,7 +52,8 @@ fn main() {
             14 => stupid_even_odd().expect("bruh"),
             15 => percent_off(),
             16 => factorial(),
-            _ => println!("\nPLEASE ENTER A NUMBER BETWEEN 0 AND 15 INCLUSIVE"),
+            17 => death_clock(),
+            _ => println!("\nPLEASE ENTER A NUMBER BETWEEN 0 AND 17 INCLUSIVE"),
         }
     }
 }
