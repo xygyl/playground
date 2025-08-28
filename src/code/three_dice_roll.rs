@@ -6,6 +6,7 @@ pub fn three_dice_roll() {
     print!("\nPlease input max range: ");
 
     let i: u32 = read!();
+    let mut iter = 0;
 
     loop {
         let r1 = rand::rng().random_range(0..=i);
@@ -14,7 +15,10 @@ pub fn three_dice_roll() {
 
         if r1 == r2 && r2 == r3 {
             println!("{} {} {}", r1, r2, r3);
+            println!("{} iterations", iter);
             break;
         }
+        println!("{} {} {}", r1, r2, r3);
+        iter += 1;
     }
 }

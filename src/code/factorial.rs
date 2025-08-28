@@ -4,10 +4,16 @@ use text_io::read;
 
 pub fn factorial() {
     print!("Please enter number: ");
-    let num: u32 = read!();
-    let mut result: BigUint = One::one();
+    let num: u128 = read!();
+    let mut vec: Vec<u128> = Vec::new();
     for i in 1..=num {
-        result *= i;
+        vec.push(i);
     }
-    println!("{}", result);
+    let result: BigUint = vec
+        .iter()
+        .fold(
+            BigUint::one(),
+            |acc, x| acc * x
+        );
+    println!("{}! = {}", num, result);
 }
