@@ -1,13 +1,5 @@
 use text_io::read;
 mod code;
-use crate::code::{
-    array_transpose::array_transpose, collatz::collatz, collatz_max_iter::collatz_max_iter,
-    draw_rect::draw_rect, draw_rect_rand::draw_rect_rand, guessing_game::guessing_game,
-    is_even_odd::is_even_odd, most_frequent_letter::most_frequent_letter, n_dice_roll::n_dice_roll,
-    n_fib::calc_fib, percent_off::percent_off, squared_array::squared_array,
-    stupid_even_odd::stupid_even_odd, three_dice_roll::three_dice_roll,
-    write_n_0s_to_file::write_n_0s_to_file, factorial::factorial, death_clock::death_clock
-};
 
 fn main() {
     loop {
@@ -36,23 +28,23 @@ fn main() {
 
         match c {
             0 => break,
-            1 => guessing_game(),
-            2 => three_dice_roll(),
-            3 => n_dice_roll(),
-            4 => draw_rect(),
-            5 => draw_rect_rand(),
-            6 => squared_array(),
-            7 => is_even_odd(),
-            8 => collatz(),
-            9 => collatz_max_iter(),
-            10 => write_n_0s_to_file(),
-            11 => most_frequent_letter(),
-            12 => array_transpose(),
-            13 => calc_fib(),
-            14 => stupid_even_odd().expect("bruh"),
-            15 => percent_off(),
-            16 => factorial(),
-            17 => death_clock(),
+            1 => code::guessing_game::guessing_game(),
+            2 => code::three_dice_roll::three_dice_roll(),
+            3 => code::n_dice_roll::n_dice_roll(),
+            4 => code::draw_rect::draw_rect(),
+            5 => code::draw_rect_rand::draw_rect_rand(),
+            6 => code::squared_array::squared_array(),
+            7 => code::is_even_odd::is_even_odd(),
+            8 => code::collatz::collatz(),
+            9 => code::collatz_max_iter::collatz_max_iter(),
+            10 => code::write_n_0s_to_file::write_n_0s_to_file(),
+            11 => code::most_frequent_letter::most_frequent_letter(),
+            12 => code::array_transpose::array_transpose(),
+            13 => code::calc_fib::calc_fib(),
+            14 => code::stupid_even_odd::stupid_even_odd().expect("bruh"),
+            15 => code::percent_off::percent_off(),
+            16 => code::factorial::factorial(),
+            17 => code::death_clock::death_clock(),
             _ => println!("\nPLEASE ENTER A NUMBER BETWEEN 0 AND 17 INCLUSIVE"),
         }
     }
