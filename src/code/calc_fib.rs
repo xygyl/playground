@@ -26,10 +26,11 @@ use text_io::read;
 /// Returns the nth fibonacci number.
 fn n_fib(n: u128) -> BigUint {
     (0..n)
-        .fold((BigUint::zero(), BigUint::one()), |(res, prev), _| {
+        .fold(
+            (BigUint::zero(), BigUint::one()),
+            |(res, prev), _| 
             (res.clone() + prev, res)
-        })
-        .0
+        ).0
 }
 
 /// Runs the fibonacci function.
