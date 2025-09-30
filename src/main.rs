@@ -4,16 +4,17 @@ mod code;
 
 fn main() {
     let options = vec![
-        "exit",
         "array_transpose",
         "collatz",
         "collatz_max_iter",
         "death_clock",
         "draw_rect",
         "draw_rect_rand",
+        "exit",
         "factorial",
         "guessing_game",
         "is_even_odd",
+        "matrix_average",
         "most_frequent_letter",
         "n_dice_roll",
         "n_fib",
@@ -40,6 +41,7 @@ fn main() {
             "factorial" => code::factorial::factorial(),
             "guessing_game" => code::guessing_game::guessing_game(),
             "is_even_odd" => code::is_even_odd::is_even_odd(),
+            "matrix_average" => code::matrix_average::matrix_average(),
             "most_frequent_letter" => code::most_frequent_letter::most_frequent_letter(),
             "n_dice_roll" => code::n_dice_roll::n_dice_roll(),
             "n_fib" => code::calc_fib::calc_fib(),
