@@ -67,24 +67,27 @@ fn min_max(matrix: &Vec<Vec<u32>>) -> (u32, u32) {
 
 fn gradient_color(val: u32) -> impl std::fmt::Display {
     // Normalize to [0.0, 1.0]
-    let t = (val.saturating_sub(10)) as f32 / (MAX - MIN) as f32;
+    let t = val as f32 / (MAX - MIN) as f32;
 
     // Interpolate:
     // green (0,255,0) → yellow (255,255,0) at t=0.5 → red (255,0,0) at t=1
-    let (r, g, b) = if t < 0.5 {
-        // green → yellow
-        let f = t / 0.5;
-        let r = (255.0 * f) as u8;
-        let g = 255;
-        let b = 0;
-        (r, g, b)
-    } else {
-        // yellow → red
-        let f = (t - 0.5) / 0.5;
-        let r = 255;
-        let g = (255.0 * (1.0 - f)) as u8;
-        let b = 0;
-        (r, g, b)
+    let (r, g, b) = match t < 0.5 {
+        true => {
+            // green → yellow
+            let f = t / 0.5;
+            let r = (255.0 * f) as u8;
+            let g = 255;
+            let b = 0;
+            (r, g, b)
+        }
+        false => {
+            // yellow → red
+            let f = (t - 0.5) / 0.5;
+            let r = 255;
+            let g = (255.0 * (1.0 - f)) as u8;
+            let b = 0;
+            (r, g, b)
+        }
     };
 
     let s = format!("{:2}", val);

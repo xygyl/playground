@@ -2,7 +2,6 @@ pub mod array_transpose;
 pub mod collatz;
 pub mod collatz_max_iter;
 pub mod death_clock;
-pub mod draw_rect;
 pub mod factorial;
 pub mod guessing_game;
 pub mod is_even_odd;

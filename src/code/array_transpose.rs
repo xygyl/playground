@@ -1,5 +1,6 @@
 use inquire::CustomType;
 use rand::Rng;
+use rayon::iter::{IntoParallelRefMutIterator, ParallelIterator};
 
 /// Creates an array of user-specified size and then transposes it, printing it before and after.
 pub fn array_transpose() {
@@ -12,14 +13,13 @@ pub fn array_transpose() {
         .with_help_message("Enter the desired number of columns")
         .prompt()
         .unwrap();
-
     let mut matrix: Vec<Vec<i32>> = vec![vec![0; cols]; rows];
 
-    for row in matrix.iter_mut() {
-        for val in row.iter_mut() {
+    matrix.par_iter_mut().for_each(|row| {
+        row.iter_mut().for_each(|val| {
             *val = rand::rng().random_range(10..=99);
-        }
-    }
+        });
+    });
 
     println!("\nOriginal Matrix:");
     for row in &matrix {
