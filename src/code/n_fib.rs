@@ -3,27 +3,6 @@ use num_bigint::BigUint;
 use num_traits::{One, Zero};
 
 /// Returns the nth fibonacci number.
-// pub fn n_fib(n: u128) -> BigUint {
-//     match n {
-//         0 => return BigUint::zero(),
-//         1 => return BigUint::one(),
-//         _ => {
-//             let mut prev_prev = BigUint::zero();
-//             let mut prev = BigUint::one();
-//             let mut current = BigUint::zero();
-
-//             for _ in 2..=n {
-//                 current = &prev + &prev_prev;
-//                 prev_prev = prev;
-//                 prev = current.clone();
-//             }
-
-//             current
-//         }
-//     }
-// }
-
-/// Returns the nth fibonacci number.
 fn fib(n: u128) -> BigUint {
     (0..n)
         .fold((BigUint::zero(), BigUint::one()), |(res, prev), _| {
