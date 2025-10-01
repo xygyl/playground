@@ -1,16 +1,10 @@
+use inquire::{CustomType, Text};
 use std::{fs::File, io::Write, process::exit};
-use text_io::read;
 
 /// Generates a file with n 0s.
 pub fn write_n_0s_to_file() {
-    print!("Number of 0s: ");
-    let size: usize = read!();
-    println!();
-
-    print!("Filename: ");
-    let filename: String = read!();
-    println!();
-
+    let size: usize = CustomType::new("Number of 0s:").prompt().unwrap();
+    let filename = Text::new("Filename:").prompt().unwrap();
     let mut file = match File::create(&filename) {
         Ok(f) => f,
         Err(e) => {

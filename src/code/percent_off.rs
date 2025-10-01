@@ -1,13 +1,8 @@
-use text_io::read;
+use inquire::CustomType;
 
 pub fn percent_off() {
-    print!("Enter item price: ");
-    let price: f32 = read!();
-    print!("Enter percent discount: ");
-    let discount: f32 = read!();
+    let price: f64 = CustomType::new("Enter item price:").prompt().unwrap();
+    let discount: f64 = CustomType::new("Enter percent discount:").prompt().unwrap();
     let final_price = price - (price * (discount * 0.01));
-    println!(
-        "${} with a {}% discount is ${}",
-        price, discount, final_price
-    );
+    println!("${:.2}", final_price);
 }

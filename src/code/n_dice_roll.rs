@@ -1,17 +1,16 @@
+use inquire::CustomType;
 use rand::Rng;
-use text_io::read;
 
-/// Rolls a dice with between 1-20 sides.
+/// Rolls a dice
 pub fn n_dice_roll() {
     loop {
-        print!("\nEnter number of die sides: ");
-        let i: u8 = read!();
-        if i <= 20 {
-            let dice = rand::rng().random_range(1..=i);
-            println!("{}", dice);
-        }
-        if i > 20 {
-            break;
+        let sides: u8 = CustomType::new("Enter number of sides:").prompt().unwrap();
+        match sides {
+            0 => break,
+            _ => {
+                let dice = rand::rng().random_range(1..=sides);
+                println!("{}", dice);
+            }
         }
     }
 }

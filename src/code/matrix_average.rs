@@ -1,15 +1,17 @@
+use inquire::CustomType;
 use owo_colors::OwoColorize;
 use rand::Rng;
 use rayon::prelude::*;
-use text_io::read;
 
 const EDGE: usize = 10;
 const MIN: u32 = 1000;
 const MAX: u32 = 9999;
 
 pub fn matrix_average() {
-    print!("Iterations: ");
-    let iter: u32 = read!();
+    let iter: u32 = CustomType::new("Iterations:")
+        .with_help_message("The number of iterations")
+        .prompt()
+        .unwrap();
 
     let mut matrix: Vec<Vec<u32>> = vec![vec![0; EDGE]; EDGE];
 

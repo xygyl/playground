@@ -1,11 +1,13 @@
-use std::fs::File;
-use std::io::{BufWriter, Result, Write};
-use text_io::read;
+use inquire::CustomType;
+use std::{
+    fs::File,
+    io::{BufWriter, Result, Write},
+};
 
 pub fn stupid_even_odd() -> Result<()> {
-    print!("\nPlease enter max for range: ");
-    let n: u32 = read!();
-
+    let n: u32 = CustomType::new("Please enter max for range:")
+        .prompt()
+        .unwrap();
     let file = File::create("stupid.rs")?;
     let mut w = BufWriter::new(file);
 
@@ -14,10 +16,9 @@ pub fn stupid_even_odd() -> Result<()> {
     writeln!(w, "    match n {{")?;
 
     for i in 0..=n {
-        if i % 2 == 0 {
-            writeln!(w, r#"        {} => println!("{} is even"),"#, i, i)?;
-        } else {
-            writeln!(w, r#"        {} => println!("{} is odd"),"#, i, i)?;
+        match i % 2 {
+            0 => writeln!(w, r#"        {} => println!("{} is even"),"#, i, i)?,
+            _ => writeln!(w, r#"        {} => println!("{} is odd"),"#, i, i)?,
         }
     }
 
@@ -26,23 +27,3 @@ pub fn stupid_even_odd() -> Result<()> {
 
     Ok(())
 }
-
-/* use text_io::read;
-
-pub fn stupid_even_odd() {
-    print!("\nPlease enter max for range: ");
-    let n: u32 = read!();
-    println!();
-    println!("fn main() {{");
-    println!("    let n = {};", n);
-    println!("    match n {{");
-    for i in 0..=n {
-        if i % 2 == 0 {
-            println!(r#"        {} => println!("{} is even"),"#, i, i);
-        } else {
-            println!(r#"        {} => println!("{} is odd"),"#, i, i);
-        }
-    }
-    println!("    }}");
-    println!("}}");
-} */

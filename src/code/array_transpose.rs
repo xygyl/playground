@@ -1,25 +1,26 @@
+use inquire::CustomType;
 use rand::Rng;
-use text_io::read;
 
-/// Prints an array of specified width and height with random integers, then prints its transposition.
+/// Creates an array of user-specified size and then transposes it, printing it before and after.
 pub fn array_transpose() {
-    // Get rows from user
-    print!("\nEnter number of rows: ");
-    let rows: usize = read!();
+    let rows: usize = CustomType::new("Rows:")
+        .with_help_message("Enter the desired number of rows")
+        .prompt()
+        .unwrap();
 
-    // Get cols from user
-    print!("Enter number of columns: ");
-    let cols: usize = read!();
+    let cols: usize = CustomType::new("Columns:")
+        .with_help_message("Enter the desired number of columns")
+        .prompt()
+        .unwrap();
 
-    // Allocate and fill matrix with random values
     let mut matrix: Vec<Vec<i32>> = vec![vec![0; cols]; rows];
+
     for row in matrix.iter_mut() {
         for val in row.iter_mut() {
-            *val = rand::rng().random_range(10..=99); // 10 to 99; ensures every number has two numbers
+            *val = rand::rng().random_range(10..=99);
         }
     }
 
-    // Print the original matrix
     println!("\nOriginal Matrix:");
     for row in &matrix {
         for &val in row {
@@ -28,7 +29,6 @@ pub fn array_transpose() {
         println!();
     }
 
-    // Compute the transpose
     let mut transpose: Vec<Vec<i32>> = vec![vec![0; rows]; cols];
     for i in 0..rows {
         for j in 0..cols {
@@ -36,7 +36,6 @@ pub fn array_transpose() {
         }
     }
 
-    // Print the transposed matrix
     println!("\nTransposed Matrix:");
     for row in &transpose {
         for &val in row {

@@ -1,14 +1,22 @@
 use dashmap::DashMap;
+use inquire::{Confirm, CustomType};
 use num_format::{Locale, ToFormattedString};
 use rayon::prelude::*;
 use std::sync::Arc;
-use text_io::read;
+
+use crate::code::collatz::collatz_arg;
 
 /// Gives the number with the most collatz iterations from a given range.
 pub fn collatz_max_iter() {
-    print!("\nPlease enter range of numbers to calculate: ");
-    let s: u64 = read!();
-    let numbers: Vec<u64> = (1..=s).collect();
+    let n: u64 = CustomType::new("Enter n:")
+        .with_help_message("The range of number to calculate (1..=input)")
+        .prompt()
+        .unwrap();
+    let show = Confirm::new("Show collatz sequence of result?")
+        .with_default(false)
+        .prompt()
+        .unwrap();
+    let numbers: Vec<u64> = (1..=n).collect();
 
     // Use an Arc-wrapped DashMap for concurrent caching.
     let collatz_map = Arc::new(DashMap::new());
@@ -50,13 +58,16 @@ pub fn collatz_max_iter() {
         .collect();
 
     // Find the number with the maximum iterations.
-    match results.iter().max_by_key(|&&(_num, iterations)| iterations) {
+    match results.iter().max_by_key(|(_num, iterations)| iterations) {
         Some(&(number_with_max_iter, max_iter)) => {
             println!(
-                "\nNumber {} took the most iterations: {}",
+                "\n{} took the most iterations: {}\n",
                 number_with_max_iter.to_formatted_string(&Locale::en),
                 max_iter.to_formatted_string(&Locale::en)
             );
+            if show == true {
+                collatz_arg(number_with_max_iter as u128);
+            } 
         }
         None => println!("\nNo numbers processed."),
     }
