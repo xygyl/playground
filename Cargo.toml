@@ -13,6 +13,7 @@ num-traits = "0.2.19"
 owo-colors = "4.2.3"
 rand = "0.9.0"
 rayon = "1.10.0"
+smallvec = "1.15.1"
 terminal_size = "0.4.3"
 
 [profile.release]
