@@ -2,8 +2,8 @@ use inquire::CustomType;
 use rand::Rng;
 use rayon::iter::{IntoParallelRefMutIterator, ParallelIterator};
 
-/// Creates an array of user-specified size and then transposes it, printing it before and after.
-pub fn array_transpose() {
+/// Creates an matrix of user-specified size and then transposes it, printing it before and after.
+pub fn matrix_transpose() {
     let rows: usize = CustomType::new("Rows:")
         .with_help_message("Enter the desired number of rows")
         .prompt()

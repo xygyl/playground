@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use inquire::{Confirm, CustomType};
 use num_format::{Locale, ToFormattedString};
 
-use crate::code::collatz::collatz_arg;
+use crate::code::math::collatz::collatz::collatz_arg;
 
 /// Single-threaded: DP + path compression + fused odd steps (odd = 2 steps).
 pub fn collatz_max_iter() {

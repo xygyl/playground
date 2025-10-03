@@ -12,9 +12,10 @@ pub fn collatz() {
     let mut iter = 0;
 
     while n != 1 {
-        match n % 2 == 0 {
-            true => n /= 2,
-            false => n = (3 * n) + 1,
+        if n % 2 == 0 {
+            n /= 2;
+        } else {
+            n = (3 * n) + 1;
         }
         sequence.push(n);
         iter += 1;
@@ -37,9 +38,10 @@ pub fn collatz_arg(mut n: u128) {
     let display_n = n;
     let mut sequence = vec![n];
     while n != 1 {
-        match n % 2 == 0 {
-            true => n /= 2,
-            false => n = (3 * n) + 1,
+        if n % 2 == 0 {
+            n /= 2;
+        } else {
+            n = (3 * n) + 1;
         }
         sequence.push(n);
     }

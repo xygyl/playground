@@ -1,3 +1,4 @@
+use indicatif::ProgressBar;
 use inquire::CustomType;
 use owo_colors::OwoColorize;
 use rand::Rng;
@@ -12,7 +13,7 @@ pub fn matrix_average() {
         .with_help_message("The number of iterations")
         .prompt()
         .unwrap();
-
+    let pb = ProgressBar::new(iter as u64);
     let mut matrix: Vec<Vec<u32>> = vec![vec![0; EDGE]; EDGE];
 
     matrix.par_iter_mut().for_each(|row| {
@@ -32,7 +33,11 @@ pub fn matrix_average() {
                     *val = (*val + rand) / 2;
                 });
             });
+            pb.inc(1);
         }
+        pb.finish();
+        println!();
+        println!();
         print_matrix(&matrix);
     }
 }
@@ -71,23 +76,20 @@ fn gradient_color(val: u32) -> impl std::fmt::Display {
 
     // Interpolate:
     // green (0,255,0) → yellow (255,255,0) at t=0.5 → red (255,0,0) at t=1
-    let (r, g, b) = match t < 0.5 {
-        true => {
-            // green → yellow
-            let f = t / 0.5;
-            let r = (255.0 * f) as u8;
-            let g = 255;
-            let b = 0;
-            (r, g, b)
-        }
-        false => {
-            // yellow → red
-            let f = (t - 0.5) / 0.5;
-            let r = 255;
-            let g = (255.0 * (1.0 - f)) as u8;
-            let b = 0;
-            (r, g, b)
-        }
+    let (r, g, b) = if t < 0.5 {
+        // green → yellow
+        let f = t / 0.5;
+        let r = (255.0 * f) as u8;
+        let g = 255;
+        let b = 0;
+        (r, g, b)
+    } else {
+        // yellow → red
+        let f = (t - 0.5) / 0.5;
+        let r = 255;
+        let g = (255.0 * (1.0 - f)) as u8;
+        let b = 0;
+        (r, g, b)
     };
 
     let s = format!("{:2}", val);
