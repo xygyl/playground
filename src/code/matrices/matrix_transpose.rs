@@ -1,6 +1,5 @@
+use crate::helper::gen_matrix::gen_matrix;
 use inquire::CustomType;
-use rand::Rng;
-use rayon::iter::{IntoParallelRefMutIterator, ParallelIterator};
 
 /// Creates an matrix of user-specified size and then transposes it, printing it before and after.
 pub fn matrix_transpose() {
@@ -13,13 +12,7 @@ pub fn matrix_transpose() {
         .with_help_message("Enter the desired number of columns")
         .prompt()
         .unwrap();
-    let mut matrix: Vec<Vec<i32>> = vec![vec![0; cols]; rows];
-
-    matrix.par_iter_mut().for_each(|row| {
-        row.iter_mut().for_each(|val| {
-            *val = rand::rng().random_range(10..=99);
-        });
-    });
+    let matrix = gen_matrix(rows, cols, 10, 99);
 
     println!("\nOriginal Matrix:");
     for row in &matrix {
@@ -29,7 +22,8 @@ pub fn matrix_transpose() {
         println!();
     }
 
-    let mut transpose: Vec<Vec<i32>> = vec![vec![0; rows]; cols];
+    let mut transpose: Vec<Vec<u32>> = vec![vec![0; rows]; cols];
+
     for i in 0..rows {
         for j in 0..cols {
             transpose[j][i] = matrix[i][j];

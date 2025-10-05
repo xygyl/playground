@@ -1,20 +1,17 @@
 [package]
-name = "misc"
+name = "playground"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-dashmap = "6.1.0"
 indicatif = "0.18.0"
 inquire = "0.9.1"
-num = "0.4.3"
 num-bigint = "0.4.6"
 num-format = "0.4.4"
 num-traits = "0.2.19"
 owo-colors = "4.2.3"
 rand = "0.9.0"
 rayon = "1.10.0"
-smallvec = "1.15.1"
 strum = { version = "0.27.2", features = ["strum_macros"] }
 strum_macros = "0.27.2"
 terminal_size = "0.4.3"

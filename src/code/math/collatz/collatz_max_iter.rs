@@ -1,7 +1,6 @@
-use std::collections::HashMap;
-
 use inquire::{Confirm, CustomType};
 use num_format::{Locale, ToFormattedString};
+use std::collections::HashMap;
 
 use crate::code::math::collatz::collatz::collatz_arg;
 

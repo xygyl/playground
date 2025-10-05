@@ -1,7 +1,11 @@
+use crate::helper::green_to_red_gradient::green_to_red_gradient;
 use inquire::{Confirm, CustomType};
 use num_format::{Locale, ToFormattedString};
 use owo_colors::OwoColorize;
 use rand::Rng;
+use rayon::iter::{
+    IndexedParallelIterator, IntoParallelIterator, IntoParallelRefIterator, ParallelIterator,
+};
 
 /// Generates three random numbers between [0..=n] and ends when they're all the same.
 pub fn three_n_dice_roll() {
@@ -17,59 +21,43 @@ pub fn three_n_dice_roll() {
         .prompt()
         .unwrap();
     let mut iter = 0;
+    let now = std::time::Instant::now();
 
     loop {
-        let r1 = rand::rng().random_range(0..=n);
-        let r2 = rand::rng().random_range(0..=n);
-        let r3 = rand::rng().random_range(0..=n);
-        if r1 == r2 && r2 == r3 {
-            iter += 1;
-            if show {
+        let vals: [u32; 3] = (0..3)
+            .into_par_iter()
+            .map(|_| rand::rng().random_range(0..=n))
+            .collect::<Vec<_>>()
+            .try_into()
+            .unwrap();
+        let all_equal = vals.par_iter().skip(1).all(|v| *v == vals[0]);
+
+        iter += 1;
+
+        if show {
+            if all_equal {
                 println!(
                     "{} {} {}",
-                    format!("{:2}", r1).truecolor(0, 127, 255).to_string(),
-                    format!("{:2}", r2).truecolor(0, 127, 255).to_string(),
-                    format!("{:2}", r3).truecolor(0, 127, 255).to_string(),
+                    format!("{:2}", vals[0]).truecolor(0, 127, 255).to_string(),
+                    format!("{:2}", vals[1]).truecolor(0, 127, 255).to_string(),
+                    format!("{:2}", vals[2]).truecolor(0, 127, 255).to_string(),
                 );
-            }
-            println!("{} iterations", iter.to_formatted_string(&Locale::en));
-            break;
-        } else {
-            iter += 1;
-            if show {
+            } else {
                 println!(
                     "{} {} {}",
-                    gradient_color(n, r1),
-                    gradient_color(n, r2),
-                    gradient_color(n, r3),
+                    green_to_red_gradient(vals[0], n),
+                    green_to_red_gradient(vals[1], n),
+                    green_to_red_gradient(vals[2], n),
                 );
             }
         }
+        if all_equal {
+            println!(
+                "{} iterations in {}ms",
+                iter.to_formatted_string(&Locale::en),
+                now.elapsed().as_millis()
+            );
+            break;
+        }
     }
-}
-
-fn gradient_color(max: u32, val: u32) -> impl std::fmt::Display {
-    // Normalize to [0.0, 1.0]
-    let t = val as f32 / max as f32;
-
-    // Interpolate:
-    // green (0,255,0) → yellow (255,255,0) at t=0.5 → red (255,0,0) at t=1
-    let (r, g, b) = if t < 0.5 {
-        // green → yellow
-        let f = t / 0.5;
-        let r = (255.0 * f) as u8;
-        let g = 255;
-        let b = 0;
-        (r, g, b)
-    } else {
-        // yellow → red
-        let f = (t - 0.5) / 0.5;
-        let r = 255;
-        let g = (255.0 * (1.0 - f)) as u8;
-        let b = 0;
-        (r, g, b)
-    };
-
-    let s = format!("{:2}", val);
-    s.truecolor(r, g, b).to_string()
 }
