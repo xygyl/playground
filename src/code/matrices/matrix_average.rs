@@ -8,11 +8,11 @@ const EDGE: usize = 10;
 const MIN: u32 = 1000;
 const MAX: u32 = 9999;
 
-pub fn matrix_average() {
+pub fn matrix_average() -> Option<()> {
     let iter: u32 = CustomType::new("Iterations:")
         .with_help_message("The number of iterations")
         .prompt()
-        .unwrap();
+        .ok()?;
     let pb = ProgressBar::new(iter as u64);
 
     let mut matrix = gen_matrix(EDGE, EDGE, MIN, MAX);
@@ -35,6 +35,7 @@ pub fn matrix_average() {
         println!();
         print_matrix(&matrix);
     }
+    Some(())
 }
 
 fn print_matrix(matrix: &Vec<Vec<u32>>) {

@@ -12,11 +12,11 @@ fn fib(n: u128) -> BigUint {
 }
 
 /// Runs the fibonacci function.
-pub fn n_fib() {
+pub fn n_fib() -> Option<()> {
     let n: u128 = CustomType::new("Enter n:")
         .with_help_message("The nth fibonacci number")
         .prompt()
-        .unwrap();
+        .ok()?;
     let nf = fib(n);
     match n {
         1 => println!("The {}st Fibonacci number is: {}", n, nf),
@@ -24,4 +24,5 @@ pub fn n_fib() {
         3 => println!("The {}rd Fibonacci number is: {}", n, nf),
         _ => println!("The {}th Fibonacci number is: {}", n, nf),
     }
+    Some(())
 }

@@ -5,20 +5,20 @@ use std::collections::HashMap;
 use crate::code::math::collatz::collatz::collatz_arg;
 
 /// Single-threaded: DP + path compression + fused odd steps (odd = 2 steps).
-pub fn collatz_max_iter() {
+pub fn collatz_max_iter() -> Option<()> {
     let n: u64 = CustomType::new("Enter n:")
         .with_help_message("The range of number to calculate (1..=input)")
         .prompt()
-        .unwrap();
+        .ok()?;
 
     let show = Confirm::new("Show collatz sequence of result?")
         .with_default(false)
         .prompt()
-        .unwrap();
+        .ok()?;
 
     if n == 0 {
         println!("\nNo numbers processed.");
-        return;
+        return None;
     }
     if n == 1 {
         println!(
@@ -29,7 +29,7 @@ pub fn collatz_max_iter() {
         if show {
             collatz_arg(1);
         }
-        return;
+        return Some(());
     }
 
     // Dense cache for [1..=n]; index 0 unused. Stores total steps to reach 1.
@@ -108,4 +108,5 @@ pub fn collatz_max_iter() {
     if show {
         collatz_arg(best_num as u128);
     }
+    Some(())
 }

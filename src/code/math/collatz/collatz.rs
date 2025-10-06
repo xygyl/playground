@@ -2,11 +2,11 @@ use inquire::CustomType;
 use num_format::{Locale, ToFormattedString};
 
 /// Prints the collatz sequence for a given number.
-pub fn collatz() {
+pub fn collatz() -> Option<()> {
     let mut n: u128 = CustomType::new("Enter n:")
         .with_help_message("Collatz sequence for the nth number")
         .prompt()
-        .unwrap();
+        .ok()?;
 
     let mut sequence = vec![n];
     let mut iter = 0;
@@ -32,6 +32,7 @@ pub fn collatz() {
         formatted_sequence.join(" -> ")
     );
     println!("\n{} iterations", iter);
+    Some(())
 }
 
 pub fn collatz_arg(mut n: u128) {

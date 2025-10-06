@@ -2,9 +2,9 @@ use inquire::{CustomType, Text};
 use std::{fs::File, io::Write, process::exit};
 
 /// Generates a file with n 0s.
-pub fn write_n_0s_to_file() {
-    let size: usize = CustomType::new("Number of 0s:").prompt().unwrap();
-    let filename = Text::new("Filename:").prompt().unwrap();
+pub fn write_n_0s_to_file() -> Option<()> {
+    let size: usize = CustomType::new("Number of 0s:").prompt().ok()?;
+    let filename = Text::new("Filename:").prompt().ok()?;
     let mut file = match File::create(&filename) {
         Ok(f) => f,
         Err(e) => {
@@ -20,4 +20,5 @@ pub fn write_n_0s_to_file() {
     }
 
     println!("File '{}' created with {} zeros.", filename, size);
+    Some(())
 }

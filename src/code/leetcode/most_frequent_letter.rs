@@ -2,8 +2,8 @@ use inquire::Text;
 use std::collections::HashMap;
 
 /// Returns the most frequent letter from a given string. Uppercase and lowercase numbers are treated as different.
-pub fn most_frequent_letter() {
-    let input = Text::new("Enter string:").prompt().unwrap();
+pub fn most_frequent_letter() -> Option<()> {
+    let input = Text::new("Enter string:").prompt().ok()?;
 
     let mut freq: HashMap<char, usize> = HashMap::new();
 
@@ -15,17 +15,15 @@ pub fn most_frequent_letter() {
             *freq.entry(ch).or_insert(0) += 1;
         }
     }
-
     let max_freq = freq
         .values() // Iterator over the values of freq
         .copied() // .values() gives a reference to the usize values in the hashmap (&usize). This converts them into owned values instead of references
         .max() // Finds the maximum value from the iterator. For the "banana" example,  it will return 'a'
         .unwrap_or(0); // Returns 0 if the input is empty
-
     for ch in input.chars() {
         if ch.is_alphabetic() && freq[&ch] == max_freq {
             println!("Most frequent letter: {}", ch);
-            break;
         }
     }
+    Some(())
 }

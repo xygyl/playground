@@ -2,16 +2,16 @@ use crate::helper::gen_matrix::gen_matrix;
 use inquire::CustomType;
 
 /// Creates an matrix of user-specified size and then transposes it, printing it before and after.
-pub fn matrix_transpose() {
+pub fn matrix_transpose() -> Option<()> {
     let rows: usize = CustomType::new("Rows:")
         .with_help_message("Enter the desired number of rows")
         .prompt()
-        .unwrap();
+        .ok()?;
 
     let cols: usize = CustomType::new("Columns:")
         .with_help_message("Enter the desired number of columns")
         .prompt()
-        .unwrap();
+        .ok()?;
     let matrix = gen_matrix(rows, cols, 10, 99);
 
     println!("\nOriginal Matrix:");
@@ -37,4 +37,5 @@ pub fn matrix_transpose() {
         }
         println!();
     }
+    Some(())
 }

@@ -1,8 +1,8 @@
 use inquire::Select;
 use owo_colors::OwoColorize;
 use std::process::exit;
-use strum::VariantArray;
 use strum_macros::{Display, VariantArray};
+use strum::VariantArray;
 use terminal_size::{terminal_size, Width};
 
 mod code;
@@ -21,6 +21,16 @@ use code::{
     matrices::{matrix_average::matrix_average, matrix_transpose::matrix_transpose},
     misc::{is_even_odd::is_even_odd, percent_off::percent_off},
 };
+macro_rules! check {
+    ($expr:expr) => {
+        if $expr.is_none() {
+            draw_border(107, 93, 255);
+            continue;
+        } else {
+            draw_border(107, 93, 255);
+        }
+    };
+}
 
 #[derive(Clone, Display, VariantArray)]
 enum Functions {
@@ -54,10 +64,17 @@ enum Functions {
     WriteNZeroesToFile,
 }
 
-fn make_border(w: u16) -> String {
-    format!("{}", "─".repeat(w as usize))
-        .truecolor(107, 93, 255)
-        .to_string()
+/// Makes the border
+fn draw_border(r: u8, g: u8, b: u8) {
+    if let Some((Width(w), _)) = terminal_size() {
+        println!(
+            "\n{}\n",
+            "─"
+                .repeat(w as usize)
+                .truecolor(r, g, b)
+                .to_string()
+        );
+    }
 }
 
 fn main() {
@@ -68,28 +85,20 @@ fn main() {
             .prompt()
             .unwrap_or_else(|_| exit(0));
         match result {
-            Functions::Collatz => collatz(),
-            Functions::CollatzMaxIter => collatz_max_iter(),
-            Functions::Factorial => factorial(),
-            Functions::GuessingGame => guessing_game(),
-            Functions::IsEvenOdd => is_even_odd(),
-            Functions::MatrixAverage => matrix_average(),
-            Functions::MatrixTranspose => matrix_transpose(),
-            Functions::MostFrequentLetter => most_frequent_letter(),
-            Functions::NDiceRoll => n_dice_roll(),
-            Functions::NFib => n_fib(),
-            Functions::PercentOff => percent_off(),
-            Functions::StupidEvenOdd => stupid_even_odd().expect("bruh"),
-            Functions::ThreeDiceRoll => three_n_dice_roll(),
-            Functions::WriteNZeroesToFile => write_n_0s_to_file(),
+            Functions::Collatz => check!(collatz()),
+            Functions::CollatzMaxIter => check!(collatz_max_iter()),
+            Functions::Factorial => check!(factorial()),
+            Functions::GuessingGame => check!(guessing_game()),
+            Functions::IsEvenOdd => check!(is_even_odd()),
+            Functions::MatrixAverage => check!(matrix_average()),
+            Functions::MatrixTranspose => check!(matrix_transpose()),
+            Functions::MostFrequentLetter => check!(most_frequent_letter()),
+            Functions::NDiceRoll => check!(n_dice_roll()),
+            Functions::NFib => check!(n_fib()),
+            Functions::PercentOff => check!(percent_off()),
+            Functions::StupidEvenOdd => check!(stupid_even_odd()),
+            Functions::ThreeDiceRoll => check!(three_n_dice_roll()),
+            Functions::WriteNZeroesToFile => check!(write_n_0s_to_file()),
         }
-        // Makes the border
-        println!(
-            "\n{}\n",
-            make_border(match terminal_size() {
-                Some((Width(h), _)) => h,
-                None => 0,
-            })
-        );
     }
 }
