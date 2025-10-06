@@ -23,11 +23,12 @@ use code::{
 };
 macro_rules! check {
     ($expr:expr) => {
-        if $expr.is_none() {
-            draw_border(107, 93, 255);
-            continue;
-        } else {
-            draw_border(107, 93, 255);
+        match $expr {
+            Some(()) => draw_border(107, 93, 255),
+            None => {
+                draw_border(107, 93, 255);
+                continue;
+            }
         }
     };
 }
