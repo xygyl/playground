@@ -1,8 +1,8 @@
 use inquire::Select;
 use owo_colors::OwoColorize;
 use std::process::exit;
-use strum_macros::{Display, VariantArray};
 use strum::VariantArray;
+use strum_macros::{Display, VariantArray};
 use terminal_size::{terminal_size, Width};
 
 mod code;
@@ -70,10 +70,7 @@ fn draw_border(r: u8, g: u8, b: u8) {
     if let Some((Width(w), _)) = terminal_size() {
         println!(
             "\n{}\n",
-            "─"
-                .repeat(w as usize)
-                .truecolor(r, g, b)
-                .to_string()
+            "─".repeat(w as usize).truecolor(r, g, b).to_string()
         );
     }
 }
