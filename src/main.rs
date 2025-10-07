@@ -21,6 +21,7 @@ use code::{
     matrices::{matrix_average::matrix_average, matrix_transpose::matrix_transpose},
     misc::{is_even_odd::is_even_odd, percent_off::percent_off},
 };
+
 macro_rules! check {
     ($expr:expr) => {
         match $expr {

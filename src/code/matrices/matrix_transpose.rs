@@ -9,7 +9,7 @@ fn print_matrix(matrix: &Vec<Vec<u32>>, message: &str) {
             print!("{:>2} ", val);
         }
         println!();
-    }    
+    }
 }
 /// Creates an matrix of user-specified size and then transposes it, printing it before and after.
 pub fn matrix_transpose() -> Option<()> {
