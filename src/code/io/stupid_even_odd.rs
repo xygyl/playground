@@ -5,11 +5,11 @@ use std::{
 };
 
 pub fn stupid_even_odd() -> Option<()> {
-    let n: u32 = CustomType::new("Please enter max for range:")
+    let n: u32 = CustomType::new("Max for range:")
+        .with_help_message("0..=n")
         .prompt()
         .ok()?;
-    let file = File::create("stupid.rs").ok()?;
-    let mut w = BufWriter::new(file);
+    let mut w = BufWriter::new(File::create("stupid.rs").ok()?);
 
     writeln!(w, "fn main() {{").ok()?;
     writeln!(w, "    let n = {};", n).ok()?;
@@ -22,6 +22,7 @@ pub fn stupid_even_odd() -> Option<()> {
         }
     }
 
+    writeln!(w, r#"        _ => println!("kys"),"#).ok()?;
     writeln!(w, "    }}").ok()?;
     writeln!(w, "}}").ok()?;
 
