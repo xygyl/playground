@@ -10,9 +10,10 @@ pub fn collatz_to_n() -> Option<()> {
     (2..=n).into_par_iter().for_each(|v| {
         let mut var = v;
         while var != 1 {
-            var = match var % 2 {
-                0 => var / 2,
-                _ => (3 * var) + 1,
+            var = if var % 2 == 0 {
+                var / 2
+            } else {
+                (3 * var) + 1
             };
             black_box(var);
         }
