@@ -42,7 +42,7 @@ enum Functions {
     CollatzMaxIter,
     #[strum(to_string = "Factorial")]
     Factorial,
-    #[strum(to_string = "Guassing Game")]
+    #[strum(to_string = "Guessing Game")]
     GuessingGame,
     #[strum(to_string = "Is Even Odd")]
     IsEvenOdd,
