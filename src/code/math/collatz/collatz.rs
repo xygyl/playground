@@ -7,7 +7,6 @@ pub fn collatz() -> Option<()> {
         .with_help_message("Collatz sequence for the nth number")
         .prompt()
         .ok()?;
-
     let mut sequence = vec![n];
     let mut iter = 0;
 

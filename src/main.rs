@@ -14,7 +14,7 @@ use code::{
     io::{stupid_even_odd::stupid_even_odd, write_n_0s_to_file::write_n_0s_to_file},
     leetcode::most_frequent_letter::most_frequent_letter,
     math::{
-        collatz::{collatz::collatz, collatz_max_iter::collatz_max_iter},
+        collatz::{collatz::collatz, collatz_max_iter::collatz_max_iter, collatz_to_n::collatz_to_n},
         factorial::factorial,
         n_fib::n_fib,
     },
@@ -40,6 +40,8 @@ enum Functions {
     Collatz,
     #[strum(to_string = "Collatz Max Iter")]
     CollatzMaxIter,
+    #[strum(to_string = "Collatz to N")]
+    CollatzToN,
     #[strum(to_string = "Factorial")]
     Factorial,
     #[strum(to_string = "Guessing Game")]
@@ -86,6 +88,7 @@ fn main() {
         match result {
             Functions::Collatz => check!(collatz()),
             Functions::CollatzMaxIter => check!(collatz_max_iter()),
+            Functions::CollatzToN => check!(collatz_to_n()),
             Functions::Factorial => check!(factorial()),
             Functions::GuessingGame => check!(guessing_game()),
             Functions::IsEvenOdd => check!(is_even_odd()),
