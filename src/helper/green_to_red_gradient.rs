@@ -1,7 +1,7 @@
 use owo_colors::OwoColorize;
 use std::fmt::Display;
 
-pub trait IntToF64 {
+pub trait IntToF64: Copy + Display {
     fn to_f64(self) -> f64;
 }
 
@@ -20,7 +20,7 @@ impl_int_to_f64!(u8, u16, u32, u64, u128, i8, i16, i32, i64, i128);
 
 pub fn green_to_red_gradient<T>(val: T, max: T) -> String
 where
-    T: Copy + IntToF64 + Display,
+    T: IntToF64,
 {
     let max_f = max.to_f64();
 
