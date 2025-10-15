@@ -3,9 +3,7 @@ use inquire::{Confirm, CustomType};
 use num_format::{Locale, ToFormattedString};
 use owo_colors::OwoColorize;
 use rand::Rng;
-use rayon::iter::{
-    IndexedParallelIterator, IntoParallelIterator, IntoParallelRefIterator, ParallelIterator,
-};
+use rayon::iter::{IndexedParallelIterator, IntoParallelIterator, IntoParallelRefIterator, ParallelIterator};
 
 /// Generates three random numbers between [0..=n] and ends when they're all the same.
 pub fn three_n_dice_roll() -> Option<()> {
@@ -21,7 +19,6 @@ pub fn three_n_dice_roll() -> Option<()> {
         .prompt()
         .ok()?;
     let mut iter = 0;
-    let now = std::time::Instant::now();
 
     loop {
         let vals: [u32; 3] = (0..3)
@@ -56,11 +53,9 @@ pub fn three_n_dice_roll() -> Option<()> {
             }
         }
         if all_equal {
-            println!(
-                "{} iterations in {}ms",
-                iter.to_formatted_string(&Locale::en),
-                now.elapsed().as_millis()
-            );
+            println!("{} iterations", iter.to_formatted_string(&Locale::en),);
+            break;
         }
     }
+    Some(())
 }

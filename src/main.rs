@@ -82,7 +82,7 @@ fn main() {
     loop {
         let result = Select::new("Select function", Functions::VARIANTS.to_vec())
             .with_vim_mode(true)
-            .with_page_size(Functions::VARIANTS.to_vec().len())
+            .with_page_size(Functions::VARIANTS.len())
             .prompt()
             .unwrap_or_else(|_| exit(0));
         match result {
