@@ -41,8 +41,8 @@ pub fn matrix_average() -> Option<()> {
 fn print_matrix(matrix: &Vec<Vec<u32>>) {
     let (min, max) = min_max(matrix);
     for row in matrix {
-        for &val in row {
-            let colored_val = green_to_red_gradient(val, MAX-MIN);
+        for val in row {
+            let colored_val = green_to_red_gradient(*val, MAX-MIN);
             print!("{} ", colored_val);
         }
         println!();
