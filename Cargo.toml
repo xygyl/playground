@@ -19,7 +19,7 @@ terminal_size = "0.4.3"
 [profile.release]
 opt-level     = 3
 debug         = 0
-strip         = true
+strip         = "symbols"
 lto           = true
 codegen-units = 1
 panic         = "unwind"
