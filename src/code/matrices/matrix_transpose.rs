@@ -24,6 +24,7 @@ pub fn matrix_transpose() -> Option<()> {
         .ok()?;
     let matrix = gen_matrix(rows, cols, 10, 99);
 
+    println!("\nOriginal Matrix:");
     print_matrix(&matrix, "Original Matrix:");
 
     let mut transpose: Vec<Vec<u32>> = vec![vec![0; rows]; cols];
@@ -33,6 +34,7 @@ pub fn matrix_transpose() -> Option<()> {
         }
     });
 
+    println!("\nTransposed Matrix:");
     print_matrix(&transpose, "Transposed Matrix:");
     Some(())
 }

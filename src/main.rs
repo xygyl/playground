@@ -14,12 +14,14 @@ use code::{
     io::{stupid_even_odd::stupid_even_odd, write_n_0s_to_file::write_n_0s_to_file},
     leetcode::most_frequent_letter::most_frequent_letter,
     math::{
-        collatz::{collatz::collatz, collatz_max_iter::collatz_max_iter, collatz_to_n::collatz_to_n},
+        collatz::{
+            collatz::collatz, collatz_max_iter::collatz_max_iter, collatz_to_n::collatz_to_n,
+        },
         factorial::factorial,
         n_fib::n_fib,
     },
     matrices::{matrix_average::matrix_average, matrix_transpose::matrix_transpose},
-    misc::{is_even_odd::is_even_odd, percent_off::percent_off},
+    misc::{death_clock::run_death_clock, is_even_odd::is_even_odd, percent_off::percent_off},
 };
 
 macro_rules! check {
@@ -36,12 +38,30 @@ macro_rules! check {
 
 #[derive(Clone, Display, VariantArray)]
 enum Functions {
+    // Collatz,
+    // CollatzMaxIter,
+    // CollatzToN,
+    // DeathClock
+    // Factorial,
+    // GuessingGame,
+    // IsEvenOdd,
+    // MatrixAverage,
+    // MatrixTranspose,
+    // MostFrequentLetter,
+    // NDiceRoll,
+    // NFib,
+    // PercentOff,
+    // StupidEvenOdd,
+    // ThreeDiceRoll,
+    // WriteNZeroesToFile,
     #[strum(to_string = "Collatz")]
     Collatz,
     #[strum(to_string = "Collatz Max Iter")]
     CollatzMaxIter,
     #[strum(to_string = "Collatz to N")]
     CollatzToN,
+    #[strum(to_string = "DeathClock")]
+    DeathClock,
     #[strum(to_string = "Factorial")]
     Factorial,
     #[strum(to_string = "Guessing Game")]
@@ -89,6 +109,7 @@ fn main() {
             Functions::Collatz => check!(collatz()),
             Functions::CollatzMaxIter => check!(collatz_max_iter()),
             Functions::CollatzToN => check!(collatz_to_n()),
+            Functions::DeathClock => check!(run_death_clock().ok()),
             Functions::Factorial => check!(factorial()),
             Functions::GuessingGame => check!(guessing_game()),
             Functions::IsEvenOdd => check!(is_even_odd()),
