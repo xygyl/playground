@@ -22,7 +22,7 @@ fn run(mut terminal: DefaultTerminal) -> Result<()> {
         let nums = death_clock(&mut counter);
         terminal.draw(|frame| render(frame, nums))?;
 
-        if event::poll(Duration::from_nanos(1))? {
+        if event::poll(Duration::from_millis(10))? {
             if matches!(event::read()?, Event::Key(_)) {
                 break Ok(());
             }
