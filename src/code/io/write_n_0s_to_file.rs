@@ -18,7 +18,7 @@ pub fn write_n_0s_to_file() -> Option<()> {
     let zeros = vec![b'0'; CHUNK_SIZE];
     let mut remaining = size;
 
-    while remaining > 0 {
+    while 0 < remaining {
         let to_write = remaining.min(CHUNK_SIZE);
         if let Err(e) = file.write_all(&zeros) {
             eprintln!("Error writing to file {}: {}", filename, e);

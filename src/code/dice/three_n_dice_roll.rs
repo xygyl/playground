@@ -3,7 +3,9 @@ use inquire::{Confirm, CustomType};
 use num_format::{Locale, ToFormattedString};
 use owo_colors::OwoColorize;
 use rand::Rng;
-use rayon::iter::{IndexedParallelIterator, IntoParallelIterator, IntoParallelRefIterator, ParallelIterator};
+use rayon::iter::{
+    IndexedParallelIterator, IntoParallelIterator, IntoParallelRefIterator, ParallelIterator,
+};
 
 /// Generates three random numbers between [0..=n] and ends when they're all the same.
 pub fn three_n_dice_roll() -> Option<()> {
