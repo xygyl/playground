@@ -12,7 +12,7 @@ use code::{
     dice::{n_dice_roll::n_dice_roll, three_n_dice_roll::three_n_dice_roll},
     guessing_game::guessing_game,
     io::{stupid_even_odd::stupid_even_odd, write_n_0s_to_file::write_n_0s_to_file},
-    leetcode::most_frequent_letter::most_frequent_letter,
+    fun::most_frequent_letter::most_frequent_letter,
     math::{
         collatz::{
             collatz::collatz, collatz_max_iter::collatz_max_iter, collatz_to_n::collatz_to_n,
@@ -23,6 +23,8 @@ use code::{
     matrices::{matrix_average::matrix_average, matrix_transpose::matrix_transpose},
     misc::{death_clock::run_death_clock, is_even_odd::is_even_odd, percent_off::percent_off},
 };
+
+use crate::code::fun::super_fizz_buzz::super_fizz_buzz;
 
 macro_rules! check {
     ($expr:expr) => {
@@ -52,6 +54,7 @@ enum Functions {
     // NFib,
     // PercentOff,
     // StupidEvenOdd,
+    // SuperFizzBuzz,
     // ThreeDiceRoll,
     // WriteNZeroesToFile,
     #[strum(to_string = "Collatz")]
@@ -82,6 +85,8 @@ enum Functions {
     PercentOff,
     #[strum(to_string = "Stupid Even-Odd")]
     StupidEvenOdd,
+    #[strum(to_string = "Super Fizz Buzz")]
+    SuperFizzBuzz,
     #[strum(to_string = "Three Dice Roll")]
     ThreeDiceRoll,
     #[strum(to_string = "Write N Zeroes to File")]
@@ -105,23 +110,25 @@ fn main() {
             .with_page_size(Functions::VARIANTS.len())
             .prompt()
             .unwrap_or_else(|_| exit(0));
+        use Functions as F;
         match result {
-            Functions::Collatz => check!(collatz()),
-            Functions::CollatzMaxIter => check!(collatz_max_iter()),
-            Functions::CollatzToN => check!(collatz_to_n()),
-            Functions::DeathClock => check!(run_death_clock().ok()),
-            Functions::Factorial => check!(factorial()),
-            Functions::GuessingGame => check!(guessing_game()),
-            Functions::IsEvenOdd => check!(is_even_odd()),
-            Functions::MatrixAverage => check!(matrix_average()),
-            Functions::MatrixTranspose => check!(matrix_transpose()),
-            Functions::MostFrequentLetter => check!(most_frequent_letter()),
-            Functions::NDiceRoll => check!(n_dice_roll()),
-            Functions::NFib => check!(n_fib()),
-            Functions::PercentOff => check!(percent_off()),
-            Functions::StupidEvenOdd => check!(stupid_even_odd()),
-            Functions::ThreeDiceRoll => check!(three_n_dice_roll()),
-            Functions::WriteNZeroesToFile => check!(write_n_0s_to_file()),
+            F::Collatz => check!(collatz()),
+            F::CollatzMaxIter => check!(collatz_max_iter()),
+            F::CollatzToN => check!(collatz_to_n()),
+            F::DeathClock => check!(run_death_clock().ok()),
+            F::Factorial => check!(factorial()),
+            F::GuessingGame => check!(guessing_game()),
+            F::IsEvenOdd => check!(is_even_odd()),
+            F::MatrixAverage => check!(matrix_average()),
+            F::MatrixTranspose => check!(matrix_transpose()),
+            F::MostFrequentLetter => check!(most_frequent_letter()),
+            F::NDiceRoll => check!(n_dice_roll()),
+            F::NFib => check!(n_fib()),
+            F::PercentOff => check!(percent_off()),
+            F::StupidEvenOdd => check!(stupid_even_odd()),
+            F::SuperFizzBuzz => check!(super_fizz_buzz()),
+            F::ThreeDiceRoll => check!(three_n_dice_roll()),
+            F::WriteNZeroesToFile => check!(write_n_0s_to_file()),
         }
     }
 }

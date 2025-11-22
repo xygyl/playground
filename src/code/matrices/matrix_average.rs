@@ -56,8 +56,9 @@ fn min_max(matrix: &Vec<Vec<u32>>) -> (u32, u32) {
     matrix
         .par_iter()
         .map(|row| {
-            let min = *row.iter().min().unwrap();
-            let max = *row.iter().max().unwrap();
+            let (min, max) = row.iter().fold((u32::MAX, u32::MIN), |(min, max), &val| {
+                (min.min(val), max.max(val))
+            });
             (min, max)
         })
         .reduce(

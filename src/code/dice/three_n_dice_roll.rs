@@ -23,12 +23,10 @@ pub fn three_n_dice_roll() -> Option<()> {
     let mut iter = 0;
 
     loop {
-        let vals: [u32; 3] = (0..3)
+        let vals: Vec<u32> = (0..3)
             .into_par_iter()
             .map(|_| rand::rng().random_range(0..=n))
-            .collect::<Vec<_>>()
-            .try_into()
-            .unwrap();
+            .collect::<Vec<_>>();
         let all_equal = vals.par_iter().skip(1).all(|&v| v == vals[0]);
 
         iter += 1;
