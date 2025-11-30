@@ -10,9 +10,12 @@ mod helper;
 
 use code::{
     dice::{n_dice_roll::n_dice_roll, three_n_dice_roll::three_n_dice_roll},
+    fun::{
+        link_cleaner::link_cleaner, most_frequent_letter::most_frequent_letter,
+        super_fizz_buzz::super_fizz_buzz,
+    },
     guessing_game::guessing_game,
     io::{stupid_even_odd::stupid_even_odd, write_n_0s_to_file::write_n_0s_to_file},
-    fun::most_frequent_letter::most_frequent_letter,
     math::{
         collatz::{
             collatz::collatz, collatz_max_iter::collatz_max_iter, collatz_to_n::collatz_to_n,
@@ -23,8 +26,6 @@ use code::{
     matrices::{matrix_average::matrix_average, matrix_transpose::matrix_transpose},
     misc::{death_clock::run_death_clock, is_even_odd::is_even_odd, percent_off::percent_off},
 };
-
-use crate::code::fun::super_fizz_buzz::super_fizz_buzz;
 
 macro_rules! check {
     ($expr:expr) => {
@@ -47,6 +48,7 @@ enum Functions {
     // Factorial,
     // GuessingGame,
     // IsEvenOdd,
+    // LinkCleaner,
     // MatrixAverage,
     // MatrixTranspose,
     // MostFrequentLetter,
@@ -71,6 +73,8 @@ enum Functions {
     GuessingGame,
     #[strum(to_string = "Is Even Odd")]
     IsEvenOdd,
+    #[strum(to_string = "Link Cleaner")]
+    LinkCleaner,
     #[strum(to_string = "Matrix Average")]
     MatrixAverage,
     #[strum(to_string = "Matrix Transpose")]
@@ -119,6 +123,7 @@ fn main() {
             F::Factorial => check!(factorial()),
             F::GuessingGame => check!(guessing_game()),
             F::IsEvenOdd => check!(is_even_odd()),
+            F::LinkCleaner => check!(link_cleaner()),
             F::MatrixAverage => check!(matrix_average()),
             F::MatrixTranspose => check!(matrix_transpose()),
             F::MostFrequentLetter => check!(most_frequent_letter()),
