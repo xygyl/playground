@@ -27,6 +27,8 @@ use code::{
     misc::{death_clock::run_death_clock, is_even_odd::is_even_odd, percent_off::percent_off},
 };
 
+use crate::code::math::average::input_average;
+
 macro_rules! check {
     ($expr:expr) => {
         match $expr {
@@ -41,6 +43,7 @@ macro_rules! check {
 
 #[derive(Clone, Display, VariantArray)]
 enum Functions {
+    // Average
     // Collatz,
     // CollatzMaxIter,
     // CollatzToN,
@@ -59,6 +62,8 @@ enum Functions {
     // SuperFizzBuzz,
     // ThreeDiceRoll,
     // WriteNZeroesToFile,
+    #[strum(to_string = "Average")]
+    Average,
     #[strum(to_string = "Collatz")]
     Collatz,
     #[strum(to_string = "Collatz Max Iter")]
@@ -116,6 +121,7 @@ fn main() {
             .unwrap_or_else(|_| exit(0));
         use Functions as F;
         match result {
+            F::Average => check!(input_average()),
             F::Collatz => check!(collatz()),
             F::CollatzMaxIter => check!(collatz_max_iter()),
             F::CollatzToN => check!(collatz_to_n()),
